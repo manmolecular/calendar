@@ -1,12 +1,12 @@
-#include "date.h"
+п»ї#include "date.h"
 
 int date::date_format = 0;
 
-/* Функции класса */
+/* Р¤СѓРЅРєС†РёРё РєР»Р°СЃСЃР° */
 
 date::date(int d, int m, int y)
 {
-	/* Узнаем текущую дату */
+	/* РЈР·РЅР°РµРј С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ */
 	time_t seconds;
 	time(&seconds);
 	struct tm *timeinfo;
@@ -17,7 +17,7 @@ date::date(int d, int m, int y)
 	if (!m) m = timeinfo->tm_mon;
 	if (!y) y = timeinfo->tm_year + 1900;
 
-	if (!check(d, m, y)) throw date_exception("incorrect_date"); 	//бросаем исключение incorrect_date
+	if (!check(d, m, y)) throw date_exception("incorrect_date"); 	//Р±СЂРѕСЃР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ incorrect_date
 	day = d;
 	month = m;
 	year = y;
@@ -25,7 +25,7 @@ date::date(int d, int m, int y)
 
 void date::change_date(int d, int m, int y)
 {
-	/* Узнаем текущую дату */
+	/* РЈР·РЅР°РµРј С‚РµРєСѓС‰СѓСЋ РґР°С‚Сѓ */
 	time_t seconds;
 	time(&seconds);
 	struct tm* timeinfo = localtime(&seconds);
@@ -35,7 +35,7 @@ void date::change_date(int d, int m, int y)
 	if (!m) m = timeinfo->tm_mon;
 	if (!y) y = timeinfo->tm_year + 1900;
 
-	if (!check(d, m, y))  throw date_exception("incorrect_date"); 	//бросаем исключение incorrect_date
+	if (!check(d, m, y))  throw date_exception("incorrect_date"); 	//Р±СЂРѕСЃР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ incorrect_date
 	day = d;
 	month = m;
 	year = y;
@@ -50,7 +50,7 @@ void date::change_d(int d)
 		struct tm* timeinfo = localtime(&seconds);
 		d = timeinfo->tm_mday;
 	}
-	if (!check(d, month, year)) throw date_exception("incorrect_date"); 	//бросаем исключение incorrect_date
+	if (!check(d, month, year)) throw date_exception("incorrect_date"); 	//Р±СЂРѕСЃР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ incorrect_date
 	day = d;
 }
 
@@ -63,7 +63,7 @@ void date::change_m(int m)
 		struct tm* timeinfo = localtime(&seconds);
 		m = timeinfo->tm_mon;
 	}
-	if (!check(day, m, year)) throw date_exception("incorrect_date"); 	//бросаем исключение incorrect_date
+	if (!check(day, m, year)) throw date_exception("incorrect_date"); 	//Р±СЂРѕСЃР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ incorrect_date
 	month = m;
 }
 
@@ -76,13 +76,13 @@ void date::change_y(int y)
 		struct tm* timeinfo = localtime(&seconds);
 		y = timeinfo->tm_year + 1900;
 	}
-	if (!check(day, month, y)) throw date_exception("incorrect_date"); 	//бросаем исключение incorrect_date
+	if (!check(day, month, y)) throw date_exception("incorrect_date"); 	//Р±СЂРѕСЃР°РµРј РёСЃРєР»СЋС‡РµРЅРёРµ incorrect_date
 	year = y;
 }
 
 void date::show_date(int type )
 {
-	if (type < 0 && type > 4) //Если мы указали тип - используем указанный. Если нет - используем стандартный
+	if (type < 0 && type > 4) //Р•СЃР»Рё РјС‹ СѓРєР°Р·Р°Р»Рё С‚РёРї - РёСЃРїРѕР»СЊР·СѓРµРј СѓРєР°Р·Р°РЅРЅС‹Р№. Р•СЃР»Рё РЅРµС‚ - РёСЃРїРѕР»СЊР·СѓРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№
 	{
 		type = date_format;
 	}
@@ -123,7 +123,7 @@ void date::show_date(int type )
 std::string date::get_date(int type)
 {
 	std::string date_as_string;
-	if (type < 0 && type > 4) //Если мы указали тип - используем указанный. Если нет - используем стандартный
+	if (type < 0 && type > 4) //Р•СЃР»Рё РјС‹ СѓРєР°Р·Р°Р»Рё С‚РёРї - РёСЃРїРѕР»СЊР·СѓРµРј СѓРєР°Р·Р°РЅРЅС‹Р№. Р•СЃР»Рё РЅРµС‚ - РёСЃРїРѕР»СЊР·СѓРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№
 	{
 		type = date_format;
 	}
@@ -174,7 +174,7 @@ std::string date::get_date(int type)
 
 }
 
-date date::operator++(int)		// ПЕРЕГРУЗКА ПОСТФИКСНОЙ ВЕРСИИ ОПЕРАТОРА ++
+date date::operator++(int)		// РџР•Р Р•Р“Р РЈР—РљРђ РџРћРЎРўР¤РРљРЎРќРћР™ Р’Р•Р РЎРР РћРџР•Р РђРўРћР Рђ ++
 {
 	date a;
 	a = *this;
@@ -249,7 +249,7 @@ date date::operator++(int)		// ПЕРЕГРУЗКА ПОСТФИКСНОЙ ВЕРСИИ ОПЕРАТОРА ++
 	return a;
 }
 
-date date::operator++()		//ПЕРЕГРУЗКА ПРЕФИКСНОЙ ВЕРСИИ ОПЕРАТОРА ++
+date date::operator++()		//РџР•Р Р•Р“Р РЈР—РљРђ РџР Р•Р¤РРљРЎРќРћР™ Р’Р•Р РЎРР РћРџР•Р РђРўРћР Рђ ++
 {
 
 	if (day < 30 && month != 2)
@@ -321,7 +321,7 @@ date date::operator++()		//ПЕРЕГРУЗКА ПРЕФИКСНОЙ ВЕРСИИ ОПЕРАТОРА ++
 
 }
 
-date date::operator--(int)		//ПЕРЕГРУЗКА ПОСТФИКСНОЙ ВЕРСИИ ОПЕРАТОРА--
+date date::operator--(int)		//РџР•Р Р•Р“Р РЈР—РљРђ РџРћРЎРўР¤РРљРЎРќРћР™ Р’Р•Р РЎРР РћРџР•Р РђРўРћР Рђ--
 {
 	date a;
 	a = *this;
@@ -376,7 +376,7 @@ date date::operator--(int)		//ПЕРЕГРУЗКА ПОСТФИКСНОЙ ВЕРСИИ ОПЕРАТОРА--
 
 }
 
-date date::operator--()		//ПЕРЕГРУЗКА ПРЕФИКСНОЙ ВЕРСИИ ОПЕРАТОРА-- 
+date date::operator--()		//РџР•Р Р•Р“Р РЈР—РљРђ РџР Р•Р¤РРљРЎРќРћР™ Р’Р•Р РЎРР РћРџР•Р РђРўРћР Рђ-- 
 {
 	if (day > 1)
 	{
@@ -432,7 +432,7 @@ date date::operator--()		//ПЕРЕГРУЗКА ПРЕФИКСНОЙ ВЕРСИИ ОПЕРАТОРА--
 
 
 
-/* Внешние функции */
+/* Р’РЅРµС€РЅРёРµ С„СѓРЅРєС†РёРё */
 
 void change_format(int type)
 {
@@ -516,7 +516,7 @@ bool check(int d, int m, int y)
 
 }
 
-bool check_leap(int y)		//Проверка високосный ли год 
+bool check_leap(int y)		//РџСЂРѕРІРµСЂРєР° РІРёСЃРѕРєРѕСЃРЅС‹Р№ Р»Рё РіРѕРґ 
 {
 	if (y % 4) return 0;
 	if (y % 100) return 1;

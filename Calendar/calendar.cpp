@@ -1,4 +1,4 @@
-#include "calendar.h"
+п»ї#include "calendar.h"
 #include <fstream>
 
 calendar::calendar() : dateHead(NULL) {};
@@ -20,8 +20,8 @@ calendar::calendar(const calendar &src) : dateHead(NULL)
 	}
 }
 
-/*Вывод в файл*/
-/*МЕНЯЛОСЬ!*/
+/*Р’С‹РІРѕРґ РІ С„Р°Р№Р»*/
+/*РњР•РќРЇР›РћРЎР¬!*/
 void calendar::output_to_file(std::string filename)
 {
 	std::ofstream f;
@@ -50,7 +50,7 @@ void calendar::output_to_file(std::string filename)
 	f.close();
 }
 
-/*МЕНЯЛОСЬ!*/
+/*РњР•РќРЇР›РћРЎР¬!*/
 void calendar::show_all_events()
 {
 	dateNode *datePtr = dateHead;
@@ -59,7 +59,7 @@ void calendar::show_all_events()
 		eventNode *eventPtr = datePtr->eventHead;
 		while (eventPtr)
 		{
-			std::cout << "дата: " << datePtr->_date << " | время: ";
+			std::cout << "РґР°С‚Р°: " << datePtr->_date << " | РІСЂРµРјСЏ: ";
 			eventPtr->_event.show_event_info();
 			std::cout << std::endl;
 			eventPtr = eventPtr->next;
@@ -72,7 +72,7 @@ void calendar::show_all_events()
 
 void calendar::create_event(event src_event, date src_date)
 {
-	//Если календарь пуст:
+	//Р•СЃР»Рё РєР°Р»РµРЅРґР°СЂСЊ РїСѓСЃС‚:
 	if (!dateHead)
 	{
 		dateHead = new dateNode;
@@ -81,14 +81,14 @@ void calendar::create_event(event src_event, date src_date)
 		dateHead->eventHead->_event = src_event;
 		return;
 	}
-	//Если не пуст, просматриваем все имеющиеся даты
+	//Р•СЃР»Рё РЅРµ РїСѓСЃС‚, РїСЂРѕСЃРјР°С‚СЂРёРІР°РµРј РІСЃРµ РёРјРµСЋС‰РёРµСЃСЏ РґР°С‚С‹
 	dateNode *datePtr = dateHead;
 	while (datePtr)
 	{
-		if (datePtr->_date == src_date) //Если в календаре нашлась такая дата, то в её список нужно вставить новое
+		if (datePtr->_date == src_date) //Р•СЃР»Рё РІ РєР°Р»РµРЅРґР°СЂРµ РЅР°С€Р»Р°СЃСЊ С‚Р°РєР°СЏ РґР°С‚Р°, С‚Рѕ РІ РµС‘ СЃРїРёСЃРѕРє РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ РЅРѕРІРѕРµ
 		{
 			eventNode *eventPtr = datePtr->eventHead;
-				//Если событие назначено на ранее время, чем самое раннее, вставляем перед ним
+				//Р•СЃР»Рё СЃРѕР±С‹С‚РёРµ РЅР°Р·РЅР°С‡РµРЅРѕ РЅР° СЂР°РЅРµРµ РІСЂРµРјСЏ, С‡РµРј СЃР°РјРѕРµ СЂР°РЅРЅРµРµ, РІСЃС‚Р°РІР»СЏРµРј РїРµСЂРµРґ РЅРёРј
 				if (src_event.get_start_time() < eventPtr->_event.get_start_time())
 				{
 					eventPtr = new eventNode;
@@ -97,10 +97,10 @@ void calendar::create_event(event src_event, date src_date)
 					datePtr->eventHead = eventPtr;
 					return;
 				}
-			//Если нет: ищем то событие, после которого нужно вставить
+			//Р•СЃР»Рё РЅРµС‚: РёС‰РµРј С‚Рѕ СЃРѕР±С‹С‚РёРµ, РїРѕСЃР»Рµ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ
 			while (eventPtr->next && (eventPtr->next->_event.get_start_time() < src_event.get_start_time()))
 				eventPtr = eventPtr->next;
-			//Вставляем после него
+			//Р’СЃС‚Р°РІР»СЏРµРј РїРѕСЃР»Рµ РЅРµРіРѕ
 			eventNode *eventTmpPtr = eventPtr->next;
 			eventPtr->next = new eventNode;
 			eventPtr->next->_event = src_event;
@@ -109,8 +109,8 @@ void calendar::create_event(event src_event, date src_date)
 		}
 		datePtr = datePtr->next;
 	}
-	//Если в календаре НЕ нашлось уже существующей даты:
-	//Если назначенная дата раньше самой ранней, вставляем перед ней
+	//Р•СЃР»Рё РІ РєР°Р»РµРЅРґР°СЂРµ РќР• РЅР°С€Р»РѕСЃСЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµР№ РґР°С‚С‹:
+	//Р•СЃР»Рё РЅР°Р·РЅР°С‡РµРЅРЅР°СЏ РґР°С‚Р° СЂР°РЅСЊС€Рµ СЃР°РјРѕР№ СЂР°РЅРЅРµР№, РІСЃС‚Р°РІР»СЏРµРј РїРµСЂРµРґ РЅРµР№
 	if (src_date < dateHead->_date)
 	{
 		datePtr = new dateNode;
@@ -121,11 +121,11 @@ void calendar::create_event(event src_event, date src_date)
 		dateHead = datePtr;
 		return;
 	}
-	//Иначе ищем после какой даты необходимо вставить нашу
+	//РРЅР°С‡Рµ РёС‰РµРј РїРѕСЃР»Рµ РєР°РєРѕР№ РґР°С‚С‹ РЅРµРѕР±С…РѕРґРёРјРѕ РІСЃС‚Р°РІРёС‚СЊ РЅР°С€Сѓ
 	datePtr = dateHead;
 	while (datePtr->next && (datePtr->next->_date < src_date))
 		datePtr = datePtr->next;
-	//Вставляем после неё
+	//Р’СЃС‚Р°РІР»СЏРµРј РїРѕСЃР»Рµ РЅРµС‘
 	dateNode *dateTmpPtr = datePtr->next;
 	datePtr->next = new dateNode;
 	datePtr->next->_date = src_date;

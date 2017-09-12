@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -6,23 +6,23 @@
 
 enum month { JAN = 1, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC };
 bool check_leap(int y);
-bool check(int d, int m, int y);						// Ïðîâåðêà êîððåêòíîñòè äàòû | 1 - êîððåêòíà | 0 - îøèáêà
+bool check(int d, int m, int y);						// ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾ÑÑ‚Ð¸ Ð´Ð°Ñ‚Ñ‹ | 1 - ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð° | 0 - Ð¾ÑˆÐ¸Ð±ÐºÐ°
 
 class date
 {
 	int day, month, year;
-	static int date_format;								// Ôîðìàò âûâîäà äàòû
+	static int date_format;								// Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð´Ð°Ñ‚Ñ‹
 
 public:
-	date(int d = 0, int m = 0, int y = 0);				// 0 - òåêóùåå çíà÷åíèå, áåç ïàðàìåòðîâ - òåêóùàÿ äàòà
+	date(int d = 0, int m = 0, int y = 0);				// 0 - Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ, Ð±ÐµÐ· Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² - Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ Ð´Ð°Ñ‚Ð°
 
-	void change_date(int d = 0, int m = 0, int y = 0);	// 0 - òåêóùåå çíà÷åíèå, áåç ïàðàìåòðîâ - òåêóùàÿ äàòà
+	void change_date(int d = 0, int m = 0, int y = 0);	// 0 - Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ, Ð±ÐµÐ· Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² - Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ Ð´Ð°Ñ‚Ð°
 	void change_d(int d = 0);
 	void change_m(int m = 0);
 	void change_y(int y = 0);
 
-	void show_date(int type = -1);						// Âûâîä íà ýêðàí
-	std::string get_date(int type = -1);				// Âîçâðàùåíèå ñòðîêè
+	void show_date(int type = -1);						// Ð’Ñ‹Ð²Ð¾Ð´ Ð½Ð° ÑÐºÑ€Ð°Ð½
+	std::string get_date(int type = -1);				// Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ðµ ÑÑ‚Ñ€Ð¾ÐºÐ¸
 
 	int get_d() { return day; };
 	int get_m() { return month; };
@@ -33,7 +33,7 @@ public:
 	date operator--(int);
 	date operator--();
 
-	friend void change_format(int type = 0);			// Âûáîð ôîðìàòà âûâîäà äàòû | 0 - d.m.y | 1 - m.d.y | 2 - d / m / y | 3 - m / d / y | 4 - d Month y
+	friend void change_format(int type = 0);			// Ð’Ñ‹Ð±Ð¾Ñ€ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð° Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð´Ð°Ñ‚Ñ‹ | 0 - d.m.y | 1 - m.d.y | 2 - d / m / y | 3 - m / d / y | 4 - d Month y
 
 	friend std::istream& operator >> (std::istream& in, date& obj);
 	friend std::ostream& operator << (std::ostream& os, date& obj);

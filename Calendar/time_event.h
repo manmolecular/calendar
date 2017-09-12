@@ -1,38 +1,38 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include <iostream>
 #include <ctime>
 
-/*Ðåàëèçîâàòü ïåðåãðóçêè >, <, >=, <=, -
-(áîëüøå, ìåíüøå, áîëüøå ðàâíî, ìåíüøå ðàâíî, ìèíóñ
-è âîçâðàùàåòü áóëåâû true èëè false*/
+/*Ð ÐµÐ°Ð»Ð¸Ð·Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿ÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ¸ >, <, >=, <=, -
+(Ð±Ð¾Ð»ÑŒÑˆÐµ, Ð¼ÐµÐ½ÑŒÑˆÐµ, Ð±Ð¾Ð»ÑŒÑˆÐµ Ñ€Ð°Ð²Ð½Ð¾, Ð¼ÐµÐ½ÑŒÑˆÐµ Ñ€Ð°Ð²Ð½Ð¾, Ð¼Ð¸Ð½ÑƒÑ
+Ð¸ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ÑŒ Ð±ÑƒÐ»ÐµÐ²Ñ‹ true Ð¸Ð»Ð¸ false*/
 
 class time_event
 {
 private:
-	int h, m, s;								// ÷àñû, ìèíóòû, ñåêóíäû (why not - ïðèâåò ïåðôåêöèîíèñòàì)
+	int h, m, s;								// Ñ‡Ð°ÑÑ‹, Ð¼Ð¸Ð½ÑƒÑ‚Ñ‹, ÑÐµÐºÑƒÐ½Ð´Ñ‹ (why not - Ð¿Ñ€Ð¸Ð²ÐµÑ‚ Ð¿ÐµÑ€Ñ„ÐµÐºÑ†Ð¸Ð¾Ð½Ð¸ÑÑ‚Ð°Ð¼)
 public:
-	time_event();								// ïî óìîë÷àíèþ - òåêóùåå âðåìÿ
-	time_event(int _h, int _m, int _s);			// ìåòîä çàäàíèÿ âðåìåíè
+	time_event();								// Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ - Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ
+	time_event(int _h, int _m, int _s);			// Ð¼ÐµÑ‚Ð¾Ð´ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
 	time_event(const time_event &src);			//
-	void set_time();							// çàäàíèå âðåìåíè
-	int set_time(int _h, int _m, int _s);		// çàäàíèå ÷åðåç àðãóìåíòû
-	void change_time();							// èçìåíèòü âðåìÿ
-	int change_time(int _h, int _m, int _s);	// èçìåíèòü âðåìÿ ÷åðåç àðãóìåíò
-	void show_time();							// ïîêàçàòü âðåìÿ
-	void add_time();							// äîáàâèòü âðåìÿ
-	int add_time(int _h, int _m, int _s);		// äîáàâèòü ÷åðåç àðãóìåíòû
-	void dec_time();							// óáàâèòü âðåìÿ
-	int dec_time(int _h, int _m, int _s);		// óáàâèòü ÷åðåç àðãóìåíòû
-	void time_now();							// óêàçûâàåì òåêóùåå âðåìÿ
-	int return_h();								// âåðíóòü ÷àñû
-	int return_m();								// âåðíóòü ìèíóòû
-	int return_s();								// âåðíóòü ñåêóíäû
-	std::string get_time();						// âåðíóòü ñòðîêó ñî âðåìåíåì
-	time_event& operator-=(time_event &a);		// ïåðåãðóçêà ìèíóñ ðàâíî
-	time_event& operator+=(time_event &a);		// ïåðåãðóçêà ïëþñ ðàâíî
+	void set_time();							// Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
+	int set_time(int _h, int _m, int _s);		// Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ Ñ‡ÐµÑ€ÐµÐ· Ð°Ñ€Ð³ÑƒÐ¼ÐµÐ½Ñ‚Ñ‹
+	void change_time();							// Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ
+	int change_time(int _h, int _m, int _s);	// Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ Ñ‡ÐµÑ€ÐµÐ· Ð°Ñ€Ð³ÑƒÐ¼ÐµÐ½Ñ‚
+	void show_time();							// Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ
+	void add_time();							// Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ
+	int add_time(int _h, int _m, int _s);		// Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ· Ð°Ñ€Ð³ÑƒÐ¼ÐµÐ½Ñ‚Ñ‹
+	void dec_time();							// ÑƒÐ±Ð°Ð²Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ
+	int dec_time(int _h, int _m, int _s);		// ÑƒÐ±Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ· Ð°Ñ€Ð³ÑƒÐ¼ÐµÐ½Ñ‚Ñ‹
+	void time_now();							// ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ Ñ‚ÐµÐºÑƒÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ
+	int return_h();								// Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ Ñ‡Ð°ÑÑ‹
+	int return_m();								// Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ Ð¼Ð¸Ð½ÑƒÑ‚Ñ‹
+	int return_s();								// Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ ÑÐµÐºÑƒÐ½Ð´Ñ‹
+	std::string get_time();						// Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ ÑÑ‚Ñ€Ð¾ÐºÑƒ ÑÐ¾ Ð²Ñ€ÐµÐ¼ÐµÐ½ÐµÐ¼
+	time_event& operator-=(time_event &a);		// Ð¿ÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ° Ð¼Ð¸Ð½ÑƒÑ Ñ€Ð°Ð²Ð½Ð¾
+	time_event& operator+=(time_event &a);		// Ð¿ÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ° Ð¿Ð»ÑŽÑ Ñ€Ð°Ð²Ð½Ð¾
 	bool operator<(time_event &a);				// 
-	bool operator==(time_event &a);				//	 ñðàâíåíèÿ
+	bool operator==(time_event &a);				//	 ÑÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ñ
 	bool operator>(time_event &a);				// 
 	bool operator>=(time_event &a);				// 
 	bool operator<=(time_event &a);				// 

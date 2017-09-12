@@ -1,4 +1,4 @@
-#include "calendar.h"
+ï»¿#include "calendar.h"
 #include <string>
 #include <iostream>
 #include "Windows.h"
@@ -18,18 +18,18 @@ calendar import(calendar object_cal)
 	time_event object_tim_start;
 	time_event object_tim_end;
 	std::ifstream f;
-	std::cout << "Ôîðìàòèðîâàíèå äîêóìåíòà äëÿ èìïîðòà: " << std::endl;
+	std::cout << "Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð° Ð´Ð»Ñ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð°: " << std::endl;
 	std::cout << "dd.mm.yyyy; hh:mm:ss - hh:mm:ss; your note here; " << std::endl;
-	std::cout << "(ïðîáåë ïîñëå çàâåðøàþùåé òî÷êè ñ çàïÿòîé íåîáõîäèì)" << std::endl;
-	std::cout << "Ââåäèòå èìÿ ôàéëà: " << std::endl;
+	std::cout << "(Ð¿Ñ€Ð¾Ð±ÐµÐ» Ð¿Ð¾ÑÐ»Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐ°ÑŽÑ‰ÐµÐ¹ Ñ‚Ð¾Ñ‡ÐºÐ¸ Ñ Ð·Ð°Ð¿ÑÑ‚Ð¾Ð¹ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼)" << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð°: " << std::endl;
 	std::string filename;
 	std::cin.ignore();
 	std::getline(std::cin, filename);
-	std::cout << "Âûáåðèòå ôîðìàò äëÿ èìïîðòà: " << std::endl;
+	std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð´Ð»Ñ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð°: " << std::endl;
 	std::cout << "1. csv" << std::endl;
 	std::cout << "2. txt" << std::endl;
 	int choose;
-	std::cout << "Ââîä: ";
+	std::cout << "Ð’Ð²Ð¾Ð´: ";
 	std::cin >> choose;
 	switch (choose)
 	{
@@ -44,12 +44,12 @@ calendar import(calendar object_cal)
 	f.open(filename);
 	if (f.is_open() == 0)
 	{
-		std::cout << std::endl << "Îøèáêà: ôàéë íå ñóùåñòâóåò èëè íå ìîæåò áûòü îòêðûò" << std::endl;
+		std::cout << std::endl << "ÐžÑˆÐ¸Ð±ÐºÐ°: Ñ„Ð°Ð¹Ð» Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸Ð»Ð¸ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚" << std::endl;
 		exit(1);
 	}
 	else
 	{
-		std::cout << std::endl << "Ôàéë óñïåøíî çàãðóæåí!" << std::endl;
+		std::cout << std::endl << "Ð¤Ð°Ð¹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð³Ñ€ÑƒÐ¶ÐµÐ½!" << std::endl;
 		char trash;
 		int day, month, year;
 		int sec, min, hour;
@@ -59,15 +59,15 @@ calendar import(calendar object_cal)
 		{
 			std::cout << ++count << ". ";
 			f >> day >> trash >> month >> trash >> year >> trash;
-			//std::cout << "äàòà: " << day << ":" << month << ":" << year << " | ";
-			std::cout << "äàòà: ";
+			//std::cout << "Ð´Ð°Ñ‚Ð°: " << day << ":" << month << ":" << year << " | ";
+			std::cout << "Ð´Ð°Ñ‚Ð°: ";
 			object_dat.change_date(day, month, year);
 			object_dat.show_date(1);
 			std::cout << " | ";
 
 			f >> hour >> trash >> min >> trash >> sec >> trash;
-			//std::cout << "âðåìÿ: " << hour << ":" << min << ":" << sec << " - ";
-			std::cout << "âðåìÿ: ";
+			//std::cout << "Ð²Ñ€ÐµÐ¼Ñ: " << hour << ":" << min << ":" << sec << " - ";
+			std::cout << "Ð²Ñ€ÐµÐ¼Ñ: ";
 			object_tim_start.set_time(hour, min, sec);
 			object_tim_start.show_time();
 			std::cout << " - ";
@@ -83,7 +83,7 @@ calendar import(calendar object_cal)
 			name.erase(name.find(' '), 1);
 			name.erase(name.find(';'), 1);
 			name.erase(name.rfind(' '), 1);
-			std::cout << "ñîáûòèå: " << name << std::endl;
+			std::cout << "ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ: " << name << std::endl;
 			event object_eve(object_tim_start, object_tim_end, name);
 			object_cal.create_event(object_eve, object_dat);
 		}
@@ -92,7 +92,7 @@ calendar import(calendar object_cal)
 	return object_cal;
 }
 
-/*Ñîçäàíèå íîâîãî ñîáûòèÿ â êàëåíäàðå*/
+/*Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ðµ*/
 calendar create_new_event(calendar object_cal)
 {
 	date object_dat;
@@ -100,43 +100,43 @@ calendar create_new_event(calendar object_cal)
 	time_event object_tim_end;
 
 	int year, month, day;
-	std::cout << std::endl << "Ââåäèòå êàëåíäàðíóþ äàòó ñîáûòèÿ:" << std::endl;
-	std::cout << "Ãîä: ";
+	std::cout << std::endl << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ð½ÑƒÑŽ Ð´Ð°Ñ‚Ñƒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ:" << std::endl;
+	std::cout << "Ð“Ð¾Ð´: ";
 	std::cin >> year;
-	std::cout << "Ìåñÿö: ";
+	std::cout << "ÐœÐµÑÑÑ†: ";
 	std::cin >> month;
-	std::cout << "Äåíü: ";
+	std::cout << "Ð”ÐµÐ½ÑŒ: ";
 	std::cin >> day;
 	object_dat.change_date(day, month, year);
 	std::cout << std::endl;
-	std::cout << "Ââåäèòå âðåìÿ íà÷àëà ñîáûòèÿ:" << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ñ€ÐµÐ¼Ñ Ð½Ð°Ñ‡Ð°Ð»Ð° ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ:" << std::endl;
 	object_tim_start.set_time();
-	std::cout << "Ââåäèòå âðåìÿ îêîí÷àíèÿ ñîáûòèÿ:" << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ñ€ÐµÐ¼Ñ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ñ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ:" << std::endl;
 	object_tim_end.set_time();
-	std::cout << "Ââåäèòå ñîáûòèå: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ: ";
 	std::string temp;
 	std::cin.ignore();				//omg
 	std::getline(std::cin, temp);
 	event object_eve(object_tim_start, object_tim_end, temp);
-	std::cout << std::endl << "Ïðîâåðêà - ââåä¸ííîå ñîáûòèå: " << std::endl;
-	std::cout << "Äàòà: ";
+	std::cout << std::endl << "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° - Ð²Ð²ÐµÐ´Ñ‘Ð½Ð½Ð¾Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ: " << std::endl;
+	std::cout << "Ð”Ð°Ñ‚Ð°: ";
 	object_dat.show_date(4);
 	std::cout << std::endl;
-	std::cout << "Íà÷àëî: ";
+	std::cout << "ÐÐ°Ñ‡Ð°Ð»Ð¾: ";
 	object_eve.show_start_time();
 	std::cout << std::endl;
-	std::cout << "Êîíåö: ";
+	std::cout << "ÐšÐ¾Ð½ÐµÑ†: ";
 	object_eve.show_end_time();
 	std::cout << std::endl;
-	std::cout << "Íàçâàíèå: ";
+	std::cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ: ";
 	object_eve.show_name();
 	std::cout << std::endl;
 	object_cal.create_event(object_eve, object_dat);
-	std::cout << "Ñîáûòèå áûëî óñïåøíî ñîçäàíî â êàëåíäàðå." << std::endl;
+	std::cout << "Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ð±Ñ‹Ð»Ð¾ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¾ Ð² ÐºÐ°Ð»ÐµÐ½Ð´Ð°Ñ€Ðµ." << std::endl;
 	return object_cal;
 }
 
-/*Âõîäíîå îêíî*/
+/*Ð’Ñ…Ð¾Ð´Ð½Ð¾Ðµ Ð¾ÐºÐ½Ð¾*/
 int intro_opener()
 {
 	int a;
@@ -147,20 +147,20 @@ int intro_opener()
 	std::cout << "		" << "| |    / _` | |/ _ \\ '_ \\ / _` |/ _` | '__|" << std::endl;
 	std::cout << "		" << "| \\__/\\ (_| | |  __/ | | | (_| | (_| | |   " << std::endl;
 	std::cout << "		" << "\\_____/\\__,_|_|\\___|_| |_|\\__,_|\\__,_|_|   " << std::endl;
-	std::cout << "	" << "		" << "Ê à ë å í ä à ð ü (v.0.9 - beta):" << std::endl;
+	std::cout << "	" << "		" << "Ðš Ð° Ð» Ðµ Ð½ Ð´ Ð° Ñ€ ÑŒ (v.0.9 - beta):" << std::endl;
 	std::cout << std::endl;
-	std::cout << "	" << "		" << "Âûáåðèòå äåéñòâèå: " << std::endl;
-	std::cout << "	" << "		" << "1. Ñîçäàòü ñîáûòèå" << std::endl;
-	std::cout << "	" << "		" << "2. Ïîêàçàòü äàòû, íà êîòîðûå íàçíà÷åíû ñîáûòèÿ" << std::endl;
-	std::cout << "	" << "		" << "3. Ïîêàçàòü ñîáûòèÿ íà äàòó" << std::endl;
-	std::cout << "	" << "		" << "4. Ïîêàçàòü âñå ñîáûòèÿ" << std::endl;
-	std::cout << "	" << "		" << "5. Ýêñïîðòèðîâàòü â csv/txt" << std::endl;
-	std::cout << "	" << "		" << "6. Èìïîðòèðîâàòü èç csv/txt" << std::endl;
+	std::cout << "	" << "		" << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ: " << std::endl;
+	std::cout << "	" << "		" << "1. Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ" << std::endl;
+	std::cout << "	" << "		" << "2. ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð´Ð°Ñ‚Ñ‹, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ñ‹ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ" << std::endl;
+	std::cout << "	" << "		" << "3. ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð½Ð° Ð´Ð°Ñ‚Ñƒ" << std::endl;
+	std::cout << "	" << "		" << "4. ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð²ÑÐµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ" << std::endl;
+	std::cout << "	" << "		" << "5. Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð² csv/txt" << std::endl;
+	std::cout << "	" << "		" << "6. Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ð· csv/txt" << std::endl;
 	std::cout << std::endl;
-	std::cout << "	" << "		" << "Äðóãèå äåéñòâèÿ: " << std::endl;
-	std::cout << "	" << "		" << "0. Âûõîä èç ïðîãðàììû" << std::endl;
+	std::cout << "	" << "		" << "Ð”Ñ€ÑƒÐ³Ð¸Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ: " << std::endl;
+	std::cout << "	" << "		" << "0. Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹" << std::endl;
 	std::cout << "	" << "		" << "10. Credits / about" << std::endl;
-	std::cout << std::endl << "	" << "		" << "Ââîä: ";
+	std::cout << std::endl << "	" << "		" << "Ð’Ð²Ð¾Ð´: ";
 	std::cin >> a;
 	return a;
 }
@@ -169,36 +169,36 @@ int intro_opener()
 //{
 //	date object_dat;
 //	int year, month, day;
-//	std::cout << std::endl << "Ââåäèòå äàòó, íà êîòîðóþ íóæíî óäàëèòü ñîáûòèå" << std::endl;
-//	std::cout << "Ãîä: ";
+//	std::cout << std::endl << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð½ÑƒÐ¶Ð½Ð¾ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ" << std::endl;
+//	std::cout << "Ð“Ð¾Ð´: ";
 //	std::cin >> year;
-//	std::cout << "Ìåñÿö: ";
+//	std::cout << "ÐœÐµÑÑÑ†: ";
 //	std::cin >> month;
-//	std::cout << "Äåíü: ";
+//	std::cout << "Ð”ÐµÐ½ÑŒ: ";
 //	std::cin >> day;
 //	object_dat.change_date(day, month, year);
 //	if (check_date)
 //	{
-//		std::cout << std::endl << "Ñîáûòèÿ íà äàííóþ äàòó:" << std::endl;
+//		std::cout << std::endl << "Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð½Ð° Ð´Ð°Ð½Ð½ÑƒÑŽ Ð´Ð°Ñ‚Ñƒ:" << std::endl;
 //		object_cal.show_date(object_dat);
-//		std::cout << std::endl << "Âûáåðèòå ñîáûòèå, êîòîðîå ñëåäóåò óäàëèòü: " << std::endl;
+//		std::cout << std::endl << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ ÑÐ»ÐµÐ´ÑƒÐµÑ‚ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ: " << std::endl;
 //	}
 //	else
 //	{
-//		std::cout << std::endl << "Íå íàéäåíî ñîáûòèé äëÿ çàäàíîé äàòû." << std::endl;
+//		std::cout << std::endl << "ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ð´Ð»Ñ Ð·Ð°Ð´Ð°Ð½Ð¾Ð¹ Ð´Ð°Ñ‚Ñ‹." << std::endl;
 //	}
 //	return object_cal;
 //}
 
 calendar show_all_dates(calendar object_cal)
 {
-	std::cout << "Â êàêîì ôîðìàòå ñëåäóåò âûâåñòè äàòû?" << std::endl;
+	std::cout << "Ð’ ÐºÐ°ÐºÐ¾Ð¼ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ ÑÐ»ÐµÐ´ÑƒÐµÑ‚ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð´Ð°Ñ‚Ñ‹?" << std::endl;
 	std::cout << "1. day.month.year" << std::endl;
 	std::cout << "2. month.day.year" << std::endl;
 	std::cout << "3. day/month/year" << std::endl;
 	std::cout << "4. month/day/year" << std::endl;
 	std::cout << "5. day month(word) year" << std::endl;
-	std::cout << "Ââîä: ";
+	std::cout << "Ð’Ð²Ð¾Ð´: ";
 	int flag;
 	std::cin >> flag;
 	object_cal.show_all_dates(flag-1);
@@ -209,22 +209,22 @@ calendar show_date_eve(calendar object_cal)
 {
 	date object_dat;
 	int year, month, day;
-	std::cout << std::endl << "Ââåäèòå äàòó, íà êîòîðóþ ñëåäóåò ïîêàçàòü ñîáûòèÿ:" << std::endl;
-	std::cout << "Ãîä: ";
+	std::cout << std::endl << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ ÑÐ»ÐµÐ´ÑƒÐµÑ‚ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ:" << std::endl;
+	std::cout << "Ð“Ð¾Ð´: ";
 	std::cin >> year;
-	std::cout << "Ìåñÿö: ";
+	std::cout << "ÐœÐµÑÑÑ†: ";
 	std::cin >> month;
-	std::cout << "Äåíü: ";
+	std::cout << "Ð”ÐµÐ½ÑŒ: ";
 	std::cin >> day;
 	object_dat.change_date(day, month, year);
 	if (object_cal.check_date(object_dat))
 	{
-		std::cout << "Ñîáûòèÿ, íàçíà÷åííûå íà çàäàííóþ äàòó:" << std::endl;
+		std::cout << "Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ, Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ‹Ðµ Ð½Ð° Ð·Ð°Ð´Ð°Ð½Ð½ÑƒÑŽ Ð´Ð°Ñ‚Ñƒ:" << std::endl;
 		object_cal.show_date(object_dat);
 	}
 	else
 	{
-		std::cout << "Íà äàííóþ äàòó ñîáûòèé íå íàéäåíî." << std::endl;
+		std::cout << "ÐÐ° Ð´Ð°Ð½Ð½ÑƒÑŽ Ð´Ð°Ñ‚Ñƒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾." << std::endl;
 	}
 	return object_cal;
 }
@@ -240,42 +240,42 @@ calendar show_all_eve(calendar object_cal)
 void aboutus()
 {
 std::cout << std::endl;
-std::cout << "	" << "Ñîâìåñòíûé ïðîåêò ãðóïïû 04505 (Êîìïüþòåðíàÿ áåçîïàñíîñòü, 2-é êóðñ) " << std::endl;
+std::cout << "	" << "Ð¡Ð¾Ð²Ð¼ÐµÑÑ‚Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ 04505 (ÐšÐ¾Ð¼Ð¿ÑŒÑŽÑ‚ÐµÑ€Ð½Ð°Ñ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑ‚ÑŒ, 2-Ð¹ ÐºÑƒÑ€Ñ) " << std::endl;
 Sleep(300);
-std::cout << "	" << "ìåõàíèêî-ìàòåìàòè÷åñêîãî ôàêóëüòåòà Òîìñêîãî Ãîñóäàðñòâåííîãî óíèâåðñèòåòà. " << std::endl;
-Sleep(300);
-std::cout << "	" << " " << std::endl;
-Sleep(300);
-std::cout << "	" << "Âûðàæàåì áëàãîäàðíîñòè: " << std::endl;
-Sleep(300);
-std::cout << "	" << "1. Íèêîëàþ Íèêîëàåâè÷ó Áîãîñëîâñêîìó è ×óðóêñàåâîé Âëàäèñëàâå Âàñèëüåâíå -  " << std::endl;
-Sleep(300);
-std::cout << "	" << "çà òî, ÷òî âåðèëè, ÷òî ó íàñ âñå ïîëó÷èòñÿ, è çà âñþ îêàçàííóþ íàì ïîìîùü " << std::endl;
-Sleep(300);
-std::cout << "	" << "â ïðîöåññå ðàáîòû íàä ïðîåêòîì. " << std::endl;
+std::cout << "	" << "Ð¼ÐµÑ…Ð°Ð½Ð¸ÐºÐ¾-Ð¼Ð°Ñ‚ÐµÐ¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ Ñ„Ð°ÐºÑƒÐ»ÑŒÑ‚ÐµÑ‚Ð° Ð¢Ð¾Ð¼ÑÐºÐ¾Ð³Ð¾ Ð“Ð¾ÑÑƒÐ´Ð°Ñ€ÑÑ‚Ð²ÐµÐ½Ð½Ð¾Ð³Ð¾ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚Ð°. " << std::endl;
 Sleep(300);
 std::cout << "	" << " " << std::endl;
 Sleep(300);
-std::cout << "	" << "2. Âñåìó ñîñòàâó ãðóïïû 04505 è êàæäîé èç 4-õ êëàññîâûõ ãðóïï â îòäåëüíîñòè. " << std::endl;
+std::cout << "	" << "Ð’Ñ‹Ñ€Ð°Ð¶Ð°ÐµÐ¼ Ð±Ð»Ð°Ð³Ð¾Ð´Ð°Ñ€Ð½Ð¾ÑÑ‚Ð¸: " << std::endl;
+Sleep(300);
+std::cout << "	" << "1. ÐÐ¸ÐºÐ¾Ð»Ð°ÑŽ ÐÐ¸ÐºÐ¾Ð»Ð°ÐµÐ²Ð¸Ñ‡Ñƒ Ð‘Ð¾Ð³Ð¾ÑÐ»Ð¾Ð²ÑÐºÐ¾Ð¼Ñƒ Ð¸ Ð§ÑƒÑ€ÑƒÐºÑÐ°ÐµÐ²Ð¾Ð¹ Ð’Ð»Ð°Ð´Ð¸ÑÐ»Ð°Ð²Ðµ Ð’Ð°ÑÐ¸Ð»ÑŒÐµÐ²Ð½Ðµ -  " << std::endl;
+Sleep(300);
+std::cout << "	" << "Ð·Ð° Ñ‚Ð¾, Ñ‡Ñ‚Ð¾ Ð²ÐµÑ€Ð¸Ð»Ð¸, Ñ‡Ñ‚Ð¾ Ñƒ Ð½Ð°Ñ Ð²ÑÐµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑÑ, Ð¸ Ð·Ð° Ð²ÑÑŽ Ð¾ÐºÐ°Ð·Ð°Ð½Ð½ÑƒÑŽ Ð½Ð°Ð¼ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒ " << std::endl;
+Sleep(300);
+std::cout << "	" << "Ð² Ð¿Ñ€Ð¾Ñ†ÐµÑÑÐµ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð½Ð°Ð´ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð¾Ð¼. " << std::endl;
 Sleep(300);
 std::cout << "	" << " " << std::endl;
 Sleep(300);
-std::cout << "	" << "3. Áü¸ðíó Ñòðàóñòðóïó " << std::endl;
+std::cout << "	" << "2. Ð’ÑÐµÐ¼Ñƒ ÑÐ¾ÑÑ‚Ð°Ð²Ñƒ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ 04505 Ð¸ ÐºÐ°Ð¶Ð´Ð¾Ð¹ Ð¸Ð· 4-Ñ… ÐºÐ»Ð°ÑÑÐ¾Ð²Ñ‹Ñ… Ð³Ñ€ÑƒÐ¿Ð¿ Ð² Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸. " << std::endl;
+Sleep(300);
+std::cout << "	" << " " << std::endl;
+Sleep(300);
+std::cout << "	" << "3. Ð‘ÑŒÑ‘Ñ€Ð½Ñƒ Ð¡Ñ‚Ñ€Ð°ÑƒÑÑ‚Ñ€ÑƒÐ¿Ñƒ " << std::endl;
 Sleep(300);
 std::cout << std::endl;
 }
 
 calendar output_to_file(calendar object_cal)
 {
-	std::cout << "Ââåäèòå èìÿ ôàéëà äëÿ çàïèñè: " << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð° Ð´Ð»Ñ Ð·Ð°Ð¿Ð¸ÑÐ¸: " << std::endl;
 	std::string name;
 	std::cin.ignore();				//omg
 	std::getline(std::cin, name);
-	std::cout << "Âûáåðèòå ôîðìàò äëÿ ýêñïîðòà: " << std::endl;
+	std::cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð´Ð»Ñ ÑÐºÑÐ¿Ð¾Ñ€Ñ‚Ð°: " << std::endl;
 	std::cout << "1. csv" << std::endl;
 	std::cout << "2. txt" << std::endl;
 	int choose;
-	std::cout << "Ââîä: ";
+	std::cout << "Ð’Ð²Ð¾Ð´: ";
 	std::cin >> choose;
 	switch (choose)
 	{
@@ -287,11 +287,11 @@ calendar output_to_file(calendar object_cal)
 			break;
 	}
 	object_cal.output_to_file(name);
-	std::cout << "Ôàéë áûë óñïåøíî çàïèñàí" << std::endl;
+	std::cout << "Ð¤Ð°Ð¹Ð» Ð±Ñ‹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½" << std::endl;
 	return object_cal;
 }
 
-/*Ñâèò÷, âûáèðàþùèé äåéñòâèå*/
+/*Ð¡Ð²Ð¸Ñ‚Ñ‡, Ð²Ñ‹Ð±Ð¸Ñ€Ð°ÑŽÑ‰Ð¸Ð¹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ*/
 calendar main_choose(int choose, calendar object_cal)
 {
 	switch (choose)
@@ -335,7 +335,7 @@ int main()
 	{
 		choose = intro_opener();
 		object_cal = main_choose(choose, object_cal);
-		std::cout << std::endl << "Âåðíóòüñÿ â ãëàâíîå ìåíþ? [0/1]: ";
+		std::cout << std::endl << "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð² Ð³Ð»Ð°Ð²Ð½Ð¾Ðµ Ð¼ÐµÐ½ÑŽ? [0/1]: ";
 		std::cin >> combo_breaker;
 		if (combo_breaker)
 		{
